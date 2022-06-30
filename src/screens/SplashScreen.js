@@ -1,12 +1,18 @@
 import React,{useState,useEffect} from "react";
 import { StyleSheet,View,Text } from 'react-native';
 import AnimatedLoader from "react-native-animated-loader";
+import { useSelector, useDispatch } from "react-redux";
+import { splashScreenAction } from "../actions";
 
 const SplashScreen= ({navigation}) =>{
 
     const [visible,setVisible]=useState(true);
+    const dispatch = useDispatch();
 
-    setTimeout(()=>{setVisible(false)},5000);
+    setTimeout(()=>{
+      setVisible(false)
+      dispatch(splashScreenAction.hideSplashScreen())
+    },3000);
     return(
         <View style={styles.splashScreen}>
             <AnimatedLoader
@@ -16,7 +22,7 @@ const SplashScreen= ({navigation}) =>{
             animationStyle={styles.lottie}
             speed={1}
           >
-            <Text>Doing something...</Text>
+            {/* <Text>Doing something...</Text> */}
           </AnimatedLoader>
       </View>
 

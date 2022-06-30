@@ -44,7 +44,6 @@ export function FormInput(props) {
 }
 
 export function FormInputWithBorder(props) {
-  console.log(props.value, "kjskjksjdkdjskdjk")
   return (
     <View>
       <Text style={props.styleHeader ? props.styleHeader : {fontSize: 15}}>

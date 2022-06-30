@@ -4,7 +4,7 @@ import {Avatar} from "native-base";
 import {View,StyleSheet} from "react-native";
 import {Text} from "native-base";
 import {useDispatch, useSelector} from 'react-redux';
-import {LoginAction} from '../actions';
+import {LoginAction,splashScreenAction} from '../actions';
 import { AvatarName } from "../helper";
 
 function Sidebar({...props}){
@@ -24,6 +24,7 @@ function Sidebar({...props}){
     }
   function onPressLogout(){
       removeValue();
+      dispatch(splashScreenAction.showSplashScreen())
       dispatch(LoginAction.logout());
   
   }

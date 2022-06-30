@@ -20,7 +20,7 @@ function Attendance() {
   }, []);
 
   const attendance = useSelector((state) => state)
-  const attendanceValue = attendance.attendnceReducer.attendance;
+  const attendanceValue = attendance.attendnceReducer.attendance == "" ? [] : attendance.attendnceReducer.attendance;
   const defaultShift = attendance.attendnceReducer.defaultShift;
   const attendanceCount = attendance.attendnceReducer.count;
   const [reason, setReason] = useState("");
@@ -31,7 +31,7 @@ function Attendance() {
         dispatch(AttendanceAction.setAttendance(response.data));
       }
     }).catch(error => {
-      console.log(error);
+      console.log(error.response, "error");
       dispatch(AttendanceAction.setError(error.response.data.errors));
     })
   }
@@ -93,7 +93,7 @@ function Attendance() {
             <DataTable.Cell width="20%"><Text style={{ fontWeight: 'bold' }}>Total hours</Text></DataTable.Cell>
           </DataTable.Row>
           <ScrollView>
-            {attendanceValue.map(atten => {
+            {attendanceValue?.map(atten => {
               return (
                 <DataTable.Row>
                   <DataTable.Cell>{atten.date}</DataTable.Cell>

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import {useDispatch, useSelector} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {LoginAction} from '../actions';
+import {LoginAction,splashScreenAction} from '../actions';
 import LoginResource from "../services/Login/LoginResource";
 import ResourceRoute from "../services/Resource";
 import { FormInput } from "../components/common/FormHelper";
@@ -33,6 +33,7 @@ export default function SignIn({navigation}) {
     }
   }
   const onPressLogin = async () =>{
+    dispatch(splashScreenAction.showSplashScreen())
     try{
       await loginData.login({email:email,password:password})
       .then(response=>{

@@ -5,7 +5,7 @@ export function Time(time) {
   return a[0] + ':' + a[1];
 }
 export function TimeinModulation(timeValue) {
-  let time = timeValue.split(':');
+  let time = timeValue?.split(':');
   let returnTime = '';
   if (time[0] > 12) {
     time[0] = time[0] - 12;
